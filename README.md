@@ -1,73 +1,93 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# 🛍️ MiPyme E-Commerce Backend — NestJS & Prisma
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+[View API Docs](https://github.com/tuusuario/mipymeecomerc-backend#readme)
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## 📌 Description
 
-## Description
+This project is **the backend for the Cuban MiPyme e-commerce platform**, implemented with **NestJS**, **Prisma** and **JWT authentication**. It provides a robust, type-safe API for:
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- Vendor management (products, inventory, sales)  
+- Customer flows (signup, login, cart, orders)  
+- Secure, stateless auth via JWT  
 
-## Installation
+Designed to pair with the Angular frontend, it exposes RESTful endpoints and real-time events (via WebSockets) for order updates.
 
-```bash
-$ npm install
+## 🛠️ Technologies
+
+- **Node.js & NestJS** (modules, DI, pipes)  
+- **TypeScript** (strict mode)  
+- **Prisma ORM** (schema-first, migrations)  
+- **PostgreSQL** (relational data)  
+- **@nestjs/jwt** & **Passport.js** (JWT auth)  
+- **class-validator** & **class-transformer** (DTOs & validation)  
+- **Socket.IO** (order status notifications)
+
+👉 Browse the code here:  
+[🔗 github.com/tuusuario/mipymeecomerc-backend](https://github.com/tuusuario/mipymeecomerc-backend)
+
+## 🎨 Why Is It Interesting?
+
+- **Type-safe data layer**: Prisma schema generates typed client for safer queries.  
+- **Modular design**: clear separation of auth, users, products, orders, and vendors.  
+- **JWT-based security**: stateless, scalable authentication with refresh tokens.  
+- **Validation & mapping**: DTOs ensure input is sanitized and transformed.  
+- **Real-time updates**: WebSockets notify vendors and customers about order progress.
+
+Great as a template for any enterprise-grade e-commerce API or multi-tenant marketplace.
+
+---
+
+## 🚀 How to Run It
+
+1. **Clone the repo**  
+   ```bash
+   git clone https://github.com/tuusuario/mipymeecomerc-backend.git
+   cd mipymeecomerc-backend
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Configure environment**
+   Copy `.env.example` → `.env` and set:
+
+   ```env
+   DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DBNAME?schema=public"
+   JWT_SECRET="your-jwt-secret"
+   JWT_EXPIRES_IN="3600s"
+   ```
+
+4. **Generate Prisma client & migrate**
+
+   ```bash
+   npx prisma migrate dev --name init
+   npx prisma generate
+   ```
+
+5. **Run the development server**
+
+   ```bash
+   npm run start:dev
+   ```
+
+6. **Explore the API**
+   Open [http://localhost:3000/api](http://localhost:3000/api) for Swagger docs.
+
+---
+
+## 📣 Note
+
+This backend is designed to work seamlessly with the Angular frontend at `https://github.com/tuusuario/mipymeecomerc-frontend`. Ensure CORS and API URLs match.
+
+---
+
+## 📌 Author
+
+Developed by **HollowDude**.
+Issues, feedback, and PRs are welcome—please fork or open an issue!
+
 ```
-
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
 ```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
